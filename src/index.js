@@ -4,6 +4,7 @@ import "./style.css";
 // Set a location
 
 let address = "";
+
 const searchLocation = document.querySelector("#searchLocation");
 
 function setLocation() {
@@ -11,8 +12,6 @@ function setLocation() {
 }
 
 // Get weather
-
-let displayName = "";
 
 function getWeather(address) {
   fetch(
@@ -26,7 +25,7 @@ function getWeather(address) {
       console.log(response);
     });
 }
-
+/*
 // display weather DOM
 
 const container = document.querySelector("#container");
@@ -36,14 +35,14 @@ function displayWeather() {
   const name = document.createElement("p");
   name.setAttribute("id", "name");
   container.appendChild(name);
-  name.textContent = displayName;
+  name.textContent = weatherInfo.then;
 }
-
+*/
 // search button
 
 const searchBtn = document.querySelector("#searchBtn");
 searchBtn.addEventListener("click", () => {
   setLocation();
   getWeather(address);
-  displayWeather();
+  //displayWeather();
 });
