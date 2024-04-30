@@ -14,3 +14,18 @@ function getWeather(location) {
       console.log(response);
     });
 }
+
+// Set a location
+
+let location = "guimarães";
+const searchLocation = document.querySelector("#searchLocation");
+const searchBtn = document.querySelector("#searchBtn");
+
+function setLocation() {
+  location = searchLocation.value;
+}
+
+searchBtn.addEventListener("click", () => {
+  setLocation();
+  getWeather(location);
+});
