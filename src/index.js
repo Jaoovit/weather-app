@@ -1,10 +1,22 @@
+import { add } from "lodash";
 import "./style.css";
+
+// Set a location
+
+let address = "";
+const searchLocation = document.querySelector("#searchLocation");
+
+function setLocation() {
+  address = searchLocation.value;
+}
 
 // Get weather
 
-function getWeather(location) {
+let displayName = "";
+
+function getWeather(address) {
   fetch(
-    `https://api.weatherapi.com/v1/current.json?key=84540330684148b78fe151345242704&q=${location}`,
+    `https://api.weatherapi.com/v1/current.json?key=84540330684148b78fe151345242704&q=${address}`,
     { mode: "cors" }
   )
     .then(function (response) {
@@ -15,17 +27,23 @@ function getWeather(location) {
     });
 }
 
-// Set a location
+// display weather DOM
 
-let location = "guimarães";
-const searchLocation = document.querySelector("#searchLocation");
-const searchBtn = document.querySelector("#searchBtn");
+const container = document.querySelector("#container");
 
-function setLocation() {
-  location = searchLocation.value;
+function displayWeather() {
+  container.innerHTML = "";
+  const name = document.createElement("p");
+  name.setAttribute("id", "name");
+  container.appendChild(name);
+  name.textContent = displayName;
 }
 
+// search button
+
+const searchBtn = document.querySelector("#searchBtn");
 searchBtn.addEventListener("click", () => {
   setLocation();
-  getWeather(location);
+  getWeather(address);
+  displayWeather();
 });
