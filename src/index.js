@@ -1,4 +1,3 @@
-import { add } from "lodash";
 import "./style.css";
 
 // Set a location

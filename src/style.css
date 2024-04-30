@@ -1,0 +1,12 @@
+#searchArea {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px;
+}
+
+#searchLocation, #searchBtn {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
