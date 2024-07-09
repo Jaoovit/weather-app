@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import "./style.css";
 
 // Set a location
@@ -24,14 +26,13 @@ const precipitation = document.querySelector("#precipitation");
 
 function getWeather(address) {
   fetch(
-    `https://api.weatherapi.com/v1/current.json?key=84540330684148b78fe151345242704&q=${address}`,
+    `https://api.weatherapi.com/v1/current.json?key=process.env.API_KEY&q=${address}`,
     { mode: "cors" }
   )
     .then(function (response) {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
       location.textContent = `${response.location.name} / ${response.location.country}`;
       image.src = response.current.condition.icon;
       temperature.textContent = `${response.current.temp_c}ºC`;
