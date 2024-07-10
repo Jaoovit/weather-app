@@ -1,10 +1,9 @@
-require("dotenv").config();
-
 import "./style.css";
 
 // Set a location
 
 let address = "Guimarães";
+const apiKey = process.env.API_KEY;
 
 const searchLocation = document.querySelector("#searchLocation");
 
@@ -26,7 +25,7 @@ const precipitation = document.querySelector("#precipitation");
 
 function getWeather(address) {
   fetch(
-    `https://api.weatherapi.com/v1/current.json?key=process.env.API_KEY&q=${address}`,
+    `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${address}`,
     { mode: "cors" }
   )
     .then(function (response) {
